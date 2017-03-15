@@ -1,5 +1,17 @@
 {{!< default}}
-
+{{#contentFor 'pageScripts'}}
+<script>
+var article = {
+    origin: 'top',
+    delay    : 150,
+    easing   : 'cubic-bezier(0.6, 0.2, 0.1, 1)',
+    rotate   : { x: 5 },
+    opacity: 0,
+    scale: 1
+};
+window.sr = ScrollReveal().reveal('header.article-header', article, 300)
+</script>
+{{/contentFor}}
 <header class="main-header {{#if blog.cover}}" style="background-image: url({{blog.cover}}){{else}}no-cover{{/if}}">
     <nav class="main-nav overlay clearfix">
         {{#if blog.logo}}
@@ -14,6 +26,6 @@
     <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
 </header>
 <main id="content" class="content" role="main">
-    {{> look}}
+    {{> loop}}
     {{> pagination}}
 </main>

@@ -13,6 +13,8 @@
         <header class="article-header">
             <h1 class="article-title">{{article.title}}</h1>
             <section class="article-meta">
+                {{#if article.author.avatar}}<img class="author-thumb" src="{{article.author.avatar}}" alt="{{article.author.name}}" nopin="nopin" />{{/if}}
+                <a href="/author/{{author.slug}}">{{article.author.name}}</a>
                 <time class="article-date" datetime="{{date format="YYYY-MM-DD"}}">{{date now=true}}</time>
             </section>
         </header>
