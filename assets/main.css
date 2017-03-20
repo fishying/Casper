@@ -262,7 +262,7 @@ p, ul, ol, dl {
 }
 
 ol, ul {
-    padding-left: 3rem;
+    padding-left: 2rem;
 }
 
 ol ol, ul ul,
@@ -935,7 +935,6 @@ body.nav-opened .nav {
     top: 0;
     left: 0;
     right: 0;
-    height: 70px;
     border: none;
     background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0) 100%);
 }
@@ -976,7 +975,9 @@ body.nav-opened .nav {
 .no-cover .page-description {
     color: rgba(0,0,0,0.5);
 }
-
+.home-template article.article {
+    visibility: hidden;
+}
 /* Add subtle load-in animation for content on the home page */
 .home-template .page-title {
     -webkit-animation: fade-in-down 0.6s;
@@ -1131,6 +1132,7 @@ body.page-template .article-title {
 
 .article-template .article-header,
 .page-template .article-header {
+   visibility: hidden;
    margin-bottom: 3.4rem;
 }
 
@@ -1149,7 +1151,7 @@ body.page-template .article-title {
    with browser width % calculations and rounding */
 .article-template .content,
 .page-template .content {
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 /* Tweak the .article wrapper style */
@@ -1165,7 +1167,9 @@ body.page-template .article-title {
 .page-template .article:after {
     display: none;
 }
-
+.article-content {
+    visibility: hidden;
+}
 /* Keep images centered, and allow images wider than the main
    text column to break out. */
 .article-content img {
@@ -1294,8 +1298,8 @@ body.page-template .article-title {
 }
 
 .no-cover.article-head.main-header {
-    height: 85px;
-    min-height: 0;
+    min-height: 100px;
+    height: auto;
     margin-bottom: 0;
     background: transparent;
 }

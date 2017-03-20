@@ -1,5 +1,19 @@
 {{!< default}}
 
+{{#contentFor 'pageScripts'}}
+<script>
+var article = {
+    origin: 'top',
+    delay    : 150,
+    easing   : 'cubic-bezier(0.6, 0.2, 0.1, 1)',
+    rotate   : { x: 5 },
+    opacity: 0,
+    scale: 1
+};
+window.sr = ScrollReveal().reveal('article.article, .article-header, .article-excerpt, .article-meta, .pagination', article, 100)
+</script>
+{{/contentFor}}
+
 <header class="main-header tag-head {{#if tag.cover}}" style="background-image: url({{tag.cover}}){{else}}{{#if blog.cover}}" style="background-image: url({{blog.cover}}){{else}}no-cover{{/if}}{{/if}}">
     <nav class="main-nav overlay clearfix">
         {{#if blog.logo}}
@@ -14,6 +28,6 @@
 </header>
 
 <main>
-    {{> 'look'}}
+    {{> 'loop'}}
     {{> pagination}}
 </main>
