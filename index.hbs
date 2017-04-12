@@ -7,9 +7,10 @@ var article = {
     easing   : 'cubic-bezier(0.6, 0.2, 0.1, 1)',
     rotate   : { x: 5 },
     opacity: 0,
-    scale: 1
+    scale: 1,
+    useDelay: 'once'
 };
-window.sr = ScrollReveal().reveal('article.article, .article-header, .article-excerpt, .article-meta, .pagination', article, 50)
+window.sr = ScrollReveal().reveal('.article-header, .article-excerpt, .article-meta, .pagination', article, 50)
 </script>
 {{/contentFor}}
 <header class="main-header {{#if blog.cover}}" style="background-image: url({{blog.cover}}){{else}}no-cover{{/if}}">
@@ -18,7 +19,6 @@ window.sr = ScrollReveal().reveal('article.article, .article-header, .article-ex
             <a class="blog-logo" href="{{blog.url}}"><img src="{{blog.logo}}" alt="{{blog.title}}" /></a>
         {{/if}}
         {{#if blog.navigation}}
-            <ul class="test">123</ul>
         {{/if}}
     </nav>
     <div class="vertical">

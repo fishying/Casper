@@ -4,17 +4,18 @@
 <script>
 var article = {
     origin: 'top',
-    delay    : 150,
     easing   : 'cubic-bezier(0.6, 0.2, 0.1, 1)',
     rotate   : { x: 2 },
-    scale: 1
+    scale: 1,
+    useDelay: 'once',
+    viewFactor: 0
 };
 window.sr = ScrollReveal()
-sr.reveal('.article-header, .article-meta, .article-content', article, 150)
+sr.reveal('.article-title, .article-meta, .article-content', article, 150)
 </script>
 {{/contentFor}}
-
-<header class="main-header article-head {{#if article.cover}}" style="background-image: url({{article.cover}}){{else}}no-cover{{/if}}">
+{{#article}}
+<header class="main-header article-head {{#if cover}}" style="background-image: url({{cover}}){{else}}no-cover{{/if}}">
     <nav class="main-nav overlay clearfix">
         {{#if blog.logo}}
             <a class="blog-logo" href="/"><img src="{{blog.logo}}" alt="{{blog.title}}" /></a>
@@ -22,27 +23,45 @@ sr.reveal('.article-header, .article-meta, .article-content', article, 150)
     </nav>
 </header>
 
-<main class="content" role="main">
+<main class="content {{class}}" role="main">
     <article class="article">
-
         <header class="article-header">
-            <h1 class="article-title">{{article.title}}</h1>
+            <h1 class="article-title">{{title}}</h1>
             <section class="article-meta">
-                {{#if article.author.avatar}}<img class="author-thumb" src="{{article.author.avatar}}" alt="{{article.author.name}}" nopin="nopin" />{{/if}}
-                <span>{{article.author.name}}</span>
+                {{#if author.avatar}}<img class="author-thumb" src="{{author.avatar}}" alt="{{author.name}}" nopin="nopin" />{{/if}}
+                <span>{{author.name}}</span>
                 <time class="article-date" datetime="{{date format="YYYY-MM-DD"}}">{{date now=true}}</time>
             </section>
         </header>
 
         <section class="article-content">
-            {{{article.content}}}
+            {{{content}}}
         </section>
         <footer class="article-footer">
-            {{#if article.author.cover}}
+            {{#if author.cover}}
             <figure class="author-image">
-                <a class="img" href="author/{{article.author.slug}}" style="background-image: url({{article.author.cover}})"><span class="hidden">{{article.author.name}}'s Picture</span></a>
+                <a class="img" href="author/{{author.slug}}" style="background-image: url({{author.cover}})"><span class="hidden">{{author.name}}'s Picture</span></a>
             </figure>
             {{/if}}
         </footer>
     </article>
 </main>
+<aside class="read-next">
+    {{#next_article}}
+    <a class="read-next-story {{#if cover}}" style="background-image: url({{cover}}){{else}}no-cover{{/if}}" href="/{{slug}}">
+        <section class="article">
+            <h2>{{title}}</h2>
+            <p>{{excerpt tailor=120}}</p>
+        </section>
+    </a>
+    {{/next_article}}
+    {{#prev_article}}
+    <a class="read-next-story prev {{#if cover}}" style="background-image: url({{cover}}){{else}}no-cover{{/if}}" href="/{{slug}}">
+        <section class="article">
+            <h2>{{title}}</h2>
+            <p>{{excerpt words="19"}}&hellip;</p>
+        </section>
+    </a>
+    {{/prev_article}}
+</aside>
+{{/article}}

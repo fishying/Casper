@@ -43,7 +43,7 @@ audio, canvas, progress, video {
 }
 audio:not([controls]) { display: none; height: 0; }
 [hidden], template { display: none; }
-a { background-color: transparent;}
+a { background-color: transparent;text-decoration: none !important;}
 a:active, a:hover { outline: 0; }
 abbr[title] { border-bottom: 1px dotted; }
 b, strong { font-weight: bold; }
@@ -103,32 +103,6 @@ td, th{ padding: 0; }
 /* ==========================================================================
    1. Icons - Sets up the icon font and respective classes
    ========================================================================== */
-
-/* Import the font file with the icons in it */
-@font-face {
-    font-family: "casper-icons";
-    src:url("../fonts/casper-icons.eot?v=1");
-    src:url("../fonts/casper-icons.eot?v=1#iefix") format("embedded-opentype"),
-        url("../fonts/casper-icons.woff?v=1") format("woff"),
-        url("../fonts/casper-icons.ttf?v=1") format("truetype"),
-        url("../fonts/casper-icons.svg?v=1#icons") format("svg");
-    font-weight: normal;
-    font-style: normal;
-}
-
-/* Apply these base styles to all icons */
-[class^="icon-"]:before, [class*=" icon-"]:before {
-    font-family: "casper-icons", "Open Sans", sans-serif;
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    text-decoration: none !important;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
 
 /* Each icon is created by inserting the correct character into the
    content of the :before pseudo element. Like a boss. */
@@ -535,7 +509,7 @@ button {
 /* Hides shit */
 .hidden {
     text-indent: -9999px;
-    visibility: hidden;
+    visibility:hidden;
     display: none;
 }
 
@@ -976,7 +950,7 @@ body.nav-opened .nav {
     color: rgba(0,0,0,0.5);
 }
 .home-template article.article {
-    visibility: hidden;
+
 }
 /* Add subtle load-in animation for content on the home page */
 .home-template .page-title {
@@ -1129,21 +1103,24 @@ body.page-template .article-title {
 /* ==========================================================================
    5. Single article - When you click on an individual article
    ========================================================================== */
-
+.home-template .article-header, .home-template .article-excerpt, .home-template .article-meta {
+    visibility:hidden;
+}
 .article-template .article-header,
 .page-template .article-header {
-   visibility: hidden;
-   margin-bottom: 3.4rem;
+    visibility:hidden;
+    margin-bottom: 3.4rem;
 }
 
 .article-template .article-title,
 .page-template .article-title {
-    margin-bottom: 0;
+    visibility:hidden;
 }
 
 .article-template .article-meta,
 .page-template .article-meta {
     margin: 0;
+    visibility:hidden;
 }
 
 /* Stop elements, such as img wider than the article content, from
@@ -1151,7 +1128,7 @@ body.page-template .article-title {
    with browser width % calculations and rounding */
 .article-template .content,
 .page-template .content {
-    /*overflow: hidden;*/
+
 }
 
 /* Tweak the .article wrapper style */
@@ -1168,7 +1145,7 @@ body.page-template .article-title {
     display: none;
 }
 .article-content {
-    visibility: hidden;
+    visibility:hidden;
 }
 /* Keep images centered, and allow images wider than the main
    text column to break out. */
