@@ -1,0 +1,17 @@
+#hypercomments_widget {
+    width: 80%;
+    max-width: 710px;
+    margin: 32px auto;
+}
+.hcc.hc__reply__box__textarea{
+    max-width: 100%;
+}
+p.hc-link {
+    width: 80%;
+    max-width: 710px;
+    margin: 32px auto;
+    line-height: 1.75em;
+    color: #BBC7CC;
+    text-align: center;
+    font-size:32px;
+}

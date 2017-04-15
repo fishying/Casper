@@ -46,6 +46,21 @@ sr.reveal('.article-title, .article-meta, .article-content', article, 150)
         </footer>
     </article>
 </main>
+<div id="hypercomments_widget"></div>
+<script type="text/javascript">
+_hcwp = window._hcwp || [];
+_hcwp.push({widget:"Stream", widget_id: 89586});
+(function() {
+if("HC_LOAD_INIT" in window)return;
+HC_LOAD_INIT = true;
+var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/89586/"+lang+"/widget.js";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(hcc, s.nextSibling);
+})();
+</script>
+<p class="hc-link" title="comments widget">正在加载评论</p>
 <aside class="read-next">
     {{#next_article}}
     <a class="read-next-story {{#if cover}}" style="background-image: url({{cover}}){{else}}no-cover{{/if}}" href="/{{slug}}">
