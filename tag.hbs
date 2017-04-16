@@ -13,21 +13,43 @@ var article = {
 window.sr = ScrollReveal().reveal('article.article, .article-header, .article-excerpt, .article-meta, .pagination', article, 100)
 </script>
 {{/contentFor}}
+{{#if blog.navigation}}
+<span class="nav-cover"></span>
+<div class="nav">
+    <h3 class="nav-title">Home</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        {{#each blog.navigation}}
+        <li class="nav-home " role="presentation"><a href="{{url}}">{{name}}</a></li>
+        {{/each}}
+    </ul>
+    {{!-- <a class="subscribe-button icon-feed" href="{{url}}">Subscribe</a> --}}
+</div>
+{{/if}}
+<div class="site-wrapper">
+    <header class="main-header tag-head {{#if tag.cover}}" style="background-image: url({{tag.cover}}){{else}}{{#if blog.cover}}" style="background-image: url({{blog.cover}}){{else}}no-cover{{/if}}{{/if}}">
+        <nav class="main-nav overlay clearfix">
+            {{#if blog.logo}}
+                <a class="blog-logo" href="/"><img src="{{blog.logo}}" alt="{{blog.title}}" /></a>
+            {{/if}}
+            {{#if blog.navigation}}
+                <a class="menu-button icon-caidan iconfont">
+                    <span class="word">Menu</span>
+                </a>
+            {{/if}}
+        </nav>
+        <div class="vertical">
+            <div class="main-header-content inner">
+                <h1 class="page-title">{{tag.name}}</h1>
+                <h2 class="page-description">{{tag.profile}}</h2>
+            </div>
+    </header>
 
-<header class="main-header tag-head {{#if tag.cover}}" style="background-image: url({{tag.cover}}){{else}}{{#if blog.cover}}" style="background-image: url({{blog.cover}}){{else}}no-cover{{/if}}{{/if}}">
-    <nav class="main-nav overlay clearfix">
-        {{#if blog.logo}}
-            <a class="blog-logo" href="/"><img src="{{blog.logo}}" alt="{{blog.title}}" /></a>
-        {{/if}}
-    </nav>
-    <div class="vertical">
-        <div class="main-header-content inner">
-            <h1 class="page-title">{{tag.name}}</h1>
-            <h2 class="page-description">{{tag.profile}}</h2>
-        </div>
-</header>
-
-<main>
-    {{> 'loop'}}
-    {{> pagination}}
-</main>
+    <main>
+        {{> 'loop'}}
+        {{> pagination}}
+    </main>
+    {{> footer}}
+</div>

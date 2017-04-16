@@ -7,12 +7,12 @@
     {{{blog_head}}}
 
     <title>{{title}}</title>
-    {{> stylesheets}}
+    {{> head}}
     {{{block "pageStyles"}}}
 </head>
 <body class="{{bodyClass}}">
     {{{body}}}
-    {{> footer}}
     {{{block "pageScripts"}}}
 </body>
+<script src="/assets/main.js"></script>
 </html>

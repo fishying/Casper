@@ -14,69 +14,92 @@ window.sr = ScrollReveal()
 sr.reveal('.article-title, .article-meta, .article-content', article, 150)
 </script>
 {{/contentFor}}
-{{#article}}
-<header class="main-header article-head {{#if cover}}" style="background-image: url({{cover}}){{else}}no-cover{{/if}}">
-    <nav class="main-nav overlay clearfix">
-        {{#if blog.logo}}
-            <a class="blog-logo" href="/"><img src="{{blog.logo}}" alt="{{blog.title}}" /></a>
-        {{/if}}
-    </nav>
-</header>
-
-<main class="content {{class}}" role="main">
-    <article class="article">
-        <header class="article-header">
-            <h1 class="article-title">{{title}}</h1>
-            <section class="article-meta">
-                {{#if author.avatar}}<img class="author-thumb" src="{{author.avatar}}" alt="{{author.name}}" nopin="nopin" />{{/if}}
-                <span>{{author.name}}</span>
-                <time class="article-date" datetime="{{date format="YYYY-MM-DD"}}">{{date now=true}}</time>
-            </section>
-        </header>
-
-        <section class="article-content">
-            {{{content}}}
-        </section>
-        <footer class="article-footer">
-            {{#if author.cover}}
-            <figure class="author-image">
-                <a class="img" href="author/{{author.slug}}" style="background-image: url({{author.cover}})"><span class="hidden">{{author.name}}'s Picture</span></a>
-            </figure>
+{{#if blog.navigation}}
+<span class="nav-cover"></span>
+<div class="nav">
+    <h3 class="nav-title">Home</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        {{#each blog.navigation}}
+        <li class="nav-home " role="presentation"><a href="{{url}}">{{name}}</a></li>
+        {{/each}}
+    </ul>
+    {{!-- <a class="subscribe-button icon-feed" href="{{url}}">Subscribe</a> --}}
+</div>
+{{/if}}
+<div class="site-wrapper">
+    {{#article}}
+    <header class="main-header article-head {{#if cover}}" style="background-image: url({{cover}})"{{else}}no-cover"{{/if}}>
+        <nav class="main-nav overlay clearfix">
+            {{#if blog.logo}}
+                <a class="blog-logo" href="/"><img src="{{blog.logo}}" alt="{{blog.title}}" /></a>
             {{/if}}
-        </footer>
-    </article>
-</main>
-<div id="hypercomments_widget"></div>
-<script type="text/javascript">
-_hcwp = window._hcwp || [];
-_hcwp.push({widget:"Stream", widget_id: 89586});
-(function() {
-if("HC_LOAD_INIT" in window)return;
-HC_LOAD_INIT = true;
-var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
-var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
-hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/89586/"+lang+"/widget.js";
-var s = document.getElementsByTagName("script")[0];
-s.parentNode.insertBefore(hcc, s.nextSibling);
-})();
-</script>
-<p class="hc-link" title="comments widget">正在加载评论</p>
-<aside class="read-next">
-    {{#next_article}}
-    <a class="read-next-story {{#if cover}}" style="background-image: url({{cover}}){{else}}no-cover{{/if}}" href="/{{slug}}">
-        <section class="article">
-            <h2>{{title}}</h2>
-            <p>{{excerpt tailor=120}}</p>
-        </section>
-    </a>
-    {{/next_article}}
-    {{#prev_article}}
-    <a class="read-next-story prev {{#if cover}}" style="background-image: url({{cover}}){{else}}no-cover{{/if}}" href="/{{slug}}">
-        <section class="article">
-            <h2>{{title}}</h2>
-            <p>{{excerpt words="19"}}&hellip;</p>
-        </section>
-    </a>
-    {{/prev_article}}
-</aside>
-{{/article}}
+            {{#if blog.navigation}}
+                <a class="menu-button icon-caidan iconfont">
+                    <span class="word">Menu</span>
+                </a>
+            {{/if}}
+        </nav>
+    </header>
+
+    <main class="content {{class}}" role="main">
+        <article class="article">
+            <header class="article-header">
+                <h1 class="article-title">{{title}}</h1>
+                <section class="article-meta">
+                    {{#if author.avatar}}<img class="author-thumb" src="{{author.avatar}}" alt="{{author.name}}" nopin="nopin" />{{/if}}
+                    <span>{{author.name}}</span>
+                    <time class="article-date" datetime="{{date format="YYYY-MM-DD"}}">{{date now=true}}</time>
+                </section>
+            </header>
+
+            <section class="article-content">
+                {{{content}}}
+            </section>
+            <footer class="article-footer">
+                {{#if author.cover}}
+                <figure class="author-image">
+                    <a class="img" href="author/{{author.slug}}" style="background-image: url({{author.cover}})"><span class="hidden">{{author.name}}'s Picture</span></a>
+                </figure>
+                {{/if}}
+            </footer>
+        </article>
+    </main>
+    <div id="hypercomments_widget"></div>
+    <script type="text/javascript">
+    _hcwp = window._hcwp || [];
+    _hcwp.push({widget:"Stream", widget_id: 89586});
+    (function() {
+    if("HC_LOAD_INIT" in window)return;
+    HC_LOAD_INIT = true;
+    var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+    var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+    hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/89586/"+lang+"/widget.js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hcc, s.nextSibling);
+    })();
+    </script>
+    <p class="hc-link" title="comments widget">正在加载评论</p>
+    <aside class="read-next">
+        {{#next_article}}
+        <a class="read-next-story {{#if cover}}" style="background-image: url({{cover}}){{else}}no-cover{{/if}}" href="/{{slug}}">
+            <section class="article">
+                <h2>{{title}}</h2>
+                <p>{{excerpt tailor=220}}</p>
+            </section>
+        </a>
+        {{/next_article}}
+        {{#prev_article}}
+        <a class="read-next-story prev {{#if cover}}" style="background-image: url({{cover}}){{else}}no-cover{{/if}}" href="/{{slug}}">
+            <section class="article">
+                <h2>{{title}}</h2>
+                <p>{{excerpt tailor=220}}&hellip;</p>
+            </section>
+        </a>
+        {{/prev_article}}
+    </aside>
+    {{/article}}
+    {{> footer}}
+</div>
